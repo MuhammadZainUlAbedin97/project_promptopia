@@ -3,20 +3,6 @@
 import { useState, useEffect } from "react";
 import PromptCard from "./PromptCard";
 
-const PromptCardList = ({ data, handleTagClicked }) => {
-	return (
-		<div className="mt-16 prompt_layout">
-			{data.map((post) => (
-				<PromptCard
-					key={post._id}
-					post={post}
-					handleTagClicked={handleTagClicked}
-				/>
-			))}
-		</div>
-	);
-};
-
 const Feed = () => {
 	const [searchText, setSearchText] = useState("");
 	const [posts, setPosts] = useState([]);
@@ -59,10 +45,15 @@ const Feed = () => {
 					className="search_input peer"
 				/>
 			</form>
-			<PromptCardList
-				data={filteredPosts}
-				handleTagClicked={handleTagClicked}
-			/>
+			<div className="mt-16 prompt_layout">
+				{filteredPosts.map((post) => (
+					<PromptCard
+						key={post._id}
+						post={post}
+						handleTagClicked={handleTagClicked}
+					/>
+				))}
+			</div>
 		</section>
 	);
 };
