@@ -27,7 +27,7 @@ const Feed = () => {
 
 	useEffect(() => {
 		const fetchPosts = async () => {
-			const response = await fetch("/api/prompt");
+			const response = await fetch(`/api/prompt`);
 			const data = await response.json();
 			setPosts(data);
 		};
@@ -44,6 +44,8 @@ const Feed = () => {
 	const handleTagClicked = (tag) => {
 		setSearchText(tag);
 	};
+
+	console.log(posts);
 
 	return (
 		<section className="feed">
